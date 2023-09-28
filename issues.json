@@ -1,0 +1,112 @@
+{
+    "issues": [
+        {
+            "description": "For now, if open's pr adds or changes long integration test, they are not tested by circle ci before merging into staging branch. We can use pytest --testmon and circleci to cache the .testmondata, to only run the long integration tests are affected by the PR.",
+            "contributor": "xzdandy"
+        },
+        {
+            "description": "Check if the query plan uses VectorIndexScan for pinecone, qdrant, chroma test cases. ",
+            "contributor": "jiashenC"
+        }
+        ,
+        {
+            "description": "I'm planning to add a new CONCAT operator to EvaDB that combines context from multiple textual rows, inspired by the WINDOW operator introduced here",
+            "contributor": "pchunduri6"
+        }
+        ,
+        {
+            "description": "When training models, tuning the parameters are common. Adding a CREATE OR REPLACE to simplify the query, so users do not need to run a DROP query every time.",
+            "contributor": "xzdandy"
+        }
+        ,
+        {
+            "description": "Right now, the binder_context is not getting updated for the function expression in the projection's target_list. So the following query will not work:\n SELECT HomeSaleForecast(3) ORDER BY price; \n CREATE TABLE AS SELECT HomeSaleForecast(3) FROM postgres.home_sale;",
+            "contributor": "gaurav274"
+        }
+        ,
+        {
+            "description": "Right now for nested SELECT queries, the rename AS is required in the query. For example, \n SELECT price FROM (SELECT price FROM home_sales) AS T; \n The following query will not work: \n SELECT price FROM (SELECT price FROM home_sales); \n We'd like to add the support for nested SELECT queries without AS to simplify the queries that user wrote.",
+            "contributor": "gaurav274"
+        }
+        ,
+        {
+            "description": "There might be a need to call a function without any arguments. Currently, calling SELECT <function>() FROM <table>; gives this error:",
+            "contributor": "xzdandy"
+        }
+        ,
+        {
+            "description": "The IF NOT EXISTS of CREATE DATABASE IF NOT EXISTS can help improving the developing experience with EvaDB and external data sources.",
+            "contributor": "gaurav274"
+        }
+        ,
+        {
+            "description": "The univariate statsforecast function train and predicts on the exact same input relation, so there is no need for a separate training procedure. Currently SELECT Forecast(12) FROM AirData; does not make sense. \n The timeseries column is not properly handled. statsforecast has a required format for the timeseries column. https://nixtla.github.io/statsforecast/docs/getting-started/getting_started_short.html \n The univariate statsforecast expects a fixed schema for the input dataframe. Renaming the column is not handled properly now. Update documentation with all available parameters.",
+            "contributor": "americast"
+        }
+        ,
+        {
+            "description": "We need the drop database operation to remove an existing database connection. For example, there are errors in the configuration parameters.",
+            "contributor": "gaurav274"
+        }
+        ,
+        {
+            "description": "The String CONCAT Function will help as compose queries in EvaDB",
+            "contributor": "xzdandy"
+        }
+        ,
+        {
+            "description": "We'd like to replace UDF to FUNCTION in EvaDB.",
+            "contributor": "jiashenC"
+        }
+        ,
+        {
+            "description": "We want to enable coverage check for branches and open PRs.",
+            "contributor": "xzdandy"
+        }
+        ,
+        {
+            "description": "Currently, we only test the releases wheel by running import evadb. We need to do more meaningful testing.",
+            "contributor": "hershd23"
+        }
+        ,
+        {
+            "description": "We want to create a table, for example, in Postgres based on the outputs of a select query involving an AI UDF.",
+            "contributor": "gaurav274"
+        }
+        ,
+        {
+            "description": "SQLite integration: Similar to Postgres, add support for more databases.",
+            "contributor": "Chitti-Ankith"
+        }
+        ,
+        {
+            "description": "We'd like introduce a CREATE TABLE query to support common modifications (e.g., blur, flip, annotate) on a video/image table. The plan is as follows:",
+            "contributor": "yulaicui"
+        }
+        ,
+        {
+            "description": "We should allow a command line flag to modify the port.",
+            "contributor": "gaurav274"
+        }
+        ,
+        {
+            "description": "We'd like to support the ability to extract text from PDFs and analyze them using NLP models.",
+            "contributor": "jarulraj"
+        }
+        ,
+        {
+            "description": "Improve the performance of __str__ of the Batch class \n Possible cause: pandas takes a lot of time in serializing NumPy array",
+            "contributor": "gaurav274"
+        }
+        ,
+        {
+            "description": "Support usage of the DROP UDF statement, with the following syntax: \n DROP UDF [IF EXISTS] <UDF_Name>;",
+            "contributor": "kaushikravichandran"
+        }
+        ,
+        {
+            "description": "Automate the minor release procedure",
+            "contributor": "jiashenC"
+        }
+    ]
+}
