@@ -1,0 +1,4 @@
+evadb
+shutil
+pandas
+python-dotenv
